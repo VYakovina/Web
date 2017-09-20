@@ -22,11 +22,18 @@
 
 
     <dependencies>
-    <dependency>
+      <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
         <version>5.2.11.Final</version>
-    </dependency>
+      </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0</version>
+        </dependency>
+
     </dependencies>
 
 
