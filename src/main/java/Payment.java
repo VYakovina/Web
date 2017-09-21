@@ -4,27 +4,26 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Payment")
+@Table
 public class Payment {
     @Id
-    @GeneratedValue(generator = "incrementator")
-    @GenericGenerator(name = "incrementator", strategy = "increment")
+    @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "paymentDate")
+    @Column
     private Date paymentDate;
 
-   @Column(name = "paymentAmount")
+    @Column
     private Integer paymentAmount;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public Date getPaymentDate() {
@@ -44,7 +43,16 @@ public class Payment {
     }
 
 
+    public Customer getCustomerPaymennt() {
+        return customerPaymennt;
+    }
+
+    public void setCustomerPaymennt(Customer customerPaymennt) {
+        this.customerPaymennt = customerPaymennt;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "packages_id", foreignKey = @ForeignKey(name = "fk_payments_id"))
-    private Package packagesPayment;
+    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_payment_id"))
+    private Customer customerPaymennt;
+
 }
