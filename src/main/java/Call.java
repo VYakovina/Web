@@ -4,26 +4,26 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Call")
+@Table
 public class Call {
     @Id
     @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "callDate")
+    @Column
     private Date callDate;
 
-    @Column(name = "phoneNumber")
+    @Column
     private Integer phoneNumber;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public Date getCallDate() {
@@ -40,6 +40,14 @@ public class Call {
 
     public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Call getCallPhone() {
+        return callPhone;
+    }
+
+    public void setCallPhone(Call callPhone) {
+        this.callPhone = callPhone;
     }
 
     @ManyToOne

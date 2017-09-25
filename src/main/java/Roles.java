@@ -3,23 +3,23 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Roles")
+@Table
 public class Roles {
     @Id
     @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "nameRole")
+    @Column
     private String nameRole;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public String getNameRole() {
@@ -30,6 +30,13 @@ public class Roles {
         this.nameRole = nameRole;
     }
 
+    public User getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(User userRoles) {
+        this.userRoles = userRoles;
+    }
 
     @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_roles_id"))

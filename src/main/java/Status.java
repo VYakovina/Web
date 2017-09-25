@@ -3,24 +3,23 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Status")
+@Table
 public class Status {
     @Id
-    @GeneratedValue(generator = "incrementator")
-    @GenericGenerator(name = "incrementator", strategy = "increment")
+    @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "statusService")
+    @Column
     private String statusService;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public String getStatusService() {
@@ -29,6 +28,14 @@ public class Status {
 
     public void setStatusService(String statusService) {
         this.statusService = statusService;
+    }
+
+    public Package getPackagesStatus() {
+        return packagesStatus;
+    }
+
+    public void setPackagesStatus(Package packagesStatus) {
+        this.packagesStatus = packagesStatus;
     }
 
     @ManyToOne

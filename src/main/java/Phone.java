@@ -2,25 +2,26 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "Phone")
+@Table
 public class Phone {
     @Id
     @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "phoneNumber")
+    @Column
     private Integer phoneNumber;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public Integer getPhoneNumber() {
@@ -31,10 +32,39 @@ public class Phone {
         this.phoneNumber = phoneNumber;
     }
 
+    public Customer getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setCustomerPhone(Customer customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public List<Call> getCallPhone() {
+        return callPhone;
+    }
+
+    public void setCallPhone(List<Call> callPhone) {
+        this.callPhone = callPhone;
+    }
+
+    public Package getPackagePhone() {
+        return packagePhone;
+    }
+
+    public void setPackagePhone(Package packagePhone) {
+        this.packagePhone = packagePhone;
+    }
+
     @ManyToOne
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_phone_id"))
     private Customer customerPhone;
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "callPhone")
-    private ArrayList<Call> callPhone = new ArrayList<>();
+    private List<Call> callPhone = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "package_id", foreignKey = @ForeignKey(name = "fk_phone2_id"))
+    private Package packagePhone;
+
 }

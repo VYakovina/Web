@@ -2,25 +2,26 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "Package")
+@Table
 public class Package {
     @Id
     @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "packageName")
+    @Column
     private String packageName;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public String getPackageName() {
@@ -31,13 +32,27 @@ public class Package {
         this.packageName = packageName;
     }
 
-    @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "packagesPayment")
-    private ArrayList<Payment> packagesPayment = new ArrayList<>();
+    public List<Status> getPackagesStatus() {
+        return packagesStatus;
+    }
+
+    public void setPackagesStatus(List<Status> packagesStatus) {
+        this.packagesStatus = packagesStatus;
+    }
+
+    public List<Phone> getPackagePhone() {
+        return packagePhone;
+    }
+
+    public void setPackagePhone(List<Phone> packagePhone) {
+        this.packagePhone = packagePhone;
+    }
 
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "packagesStatus")
-    private ArrayList<Status> packagesStatus = new ArrayList<>();
+    private List<Status> packagesStatus = new ArrayList<>();
 
-    @OneToMany(mappedBy = "rationalPack",cascade = CascadeType.ALL,orphanRemoval = true)
-    private ArrayList<Relational> rationalPack = new ArrayList<>();
+    @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "packagePhone")
+    private List<Phone> packagePhone = new ArrayList<>();
+
 }

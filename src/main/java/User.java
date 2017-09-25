@@ -2,28 +2,29 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table
 public class User {
     @Id
     @GeneratedValue
 
-    @Column(name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "userName")
+    @Column
     private String userName;
 
-    @Column(name = "userPass")
+    @Column
     private String userPass;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public String getUserName() {
@@ -42,10 +43,26 @@ public class User {
         this.userPass = userPass;
     }
 
+    public Customer getCustomerUser() {
+        return customerUser;
+    }
+
+    public void setCustomerUser(Customer customerUser) {
+        this.customerUser = customerUser;
+    }
+
+    public List<Roles> getUserRoles() {
+        return userRole;
+    }
+
+    public void setUserRoles(ArrayList<Roles> userRoles) {
+        this.userRole = userRoles;
+    }
+
     @ManyToOne
     @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_user_id"))
     private Customer customerUser;
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "userRoles")
-    private ArrayList<Roles> userRoles = new ArrayList<>();
+    private List<Roles> userRole = new ArrayList<>();
 }

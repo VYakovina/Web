@@ -1,37 +1,36 @@
-import antlr.collections.List;
-import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Customer")
+@Table
 public class Customer {
     @Id
-    @GeneratedValue(generator = "incrementator")
-    @GenericGenerator(name = "incrementator", strategy = "increment")
+    @GeneratedValue
 
-    @Column (name = "Row_id")
-    private Integer Row_id;
+    @Column
+    private Integer row_id;
 
-    @Column(name = "customerName")
+    @Column
     private String customerName;
 
-    @Column(name = "Balance")
-    private Float Balance;
+    @Column
+    private float balance;
 
-    @Column(name = "Activated")
-    private Date Activated;
+    @Column
+    private Date activated;
 
-    @Column (name = "Deactivated")
-    private Date Deactivated;
+    @Column
+    private Date deactivated;
 
     public Integer getRow_id() {
-        return Row_id;
+        return row_id;
     }
 
     public void setRow_id(Integer row_id) {
-        Row_id = row_id;
+        this.row_id = row_id;
     }
 
     public String getCustomerName() {
@@ -42,37 +41,61 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public Float getBalance() {
-        return Balance;
+    public float getBalance() {
+        return balance;
     }
 
-    public void setBalance(Float balance) {
-        Balance = balance;
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 
     public Date getActivated() {
-        return Activated;
+        return activated;
     }
 
     public void setActivated(Date activated) {
-        Activated = activated;
+        this.activated = activated;
     }
 
     public Date getDeactivated() {
-        return Deactivated;
+        return deactivated;
     }
 
     public void setDeactivated(Date deactivated) {
-        Deactivated = deactivated;
+        this.deactivated = deactivated;
+    }
+
+    public List<Phone> getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setCustomerPhone(List<Phone> customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public List<User> getCustomerUser() {
+        return customerUser;
+    }
+
+    public void setCustomerUser(List<User> customerUser) {
+        this.customerUser = customerUser;
+    }
+
+    public List<Payment> getCustomerPayment() {
+        return customerPayment;
+    }
+
+    public void setCustomerPayment(List<Payment> customerPayment) {
+        this.customerPayment = customerPayment;
     }
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerPhone")
-    private ArrayList<Phone> customerPhone = new ArrayList<>();
+    private List<Phone> customerPhone = new ArrayList<>();
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerUser")
-    private ArrayList<User> customerUser = new ArrayList<>();
+    private List<User> customerUser = new ArrayList<>();
 
-    @OneToMany(mappedBy = "rationalPack",cascade = CascadeType.ALL,orphanRemoval = true)
-    private ArrayList<Relational> rationalPack = new ArrayList<>();
+    @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerPaymennt")
+    private List<Payment> customerPayment = new ArrayList<>();
 
 }
