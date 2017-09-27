@@ -25,6 +25,9 @@ public class Customer {
     @Column
     private Date deactivated;
 
+    public Customer() {
+    }
+
     public Integer getRow_id() {
         return row_id;
     }
