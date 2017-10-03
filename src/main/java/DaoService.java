@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.List;
 
 public class DaoService<T>  {
 
-    private static InfoDao infoDao;
+    private InfoDao <T,Integer> infoDao;
 
     public DaoService() {
         infoDao = new InfoDao();
@@ -20,31 +21,31 @@ public class DaoService<T>  {
         infoDao.closeCurrentSessionwithTransaction();
     }
 
-    public T findById(Integer id) {
+    public T findById(Class <T> clazz, Integer id) {
         infoDao.openCurrentSession();
-        T obj = (T) infoDao.findById(id);
+        T obj =  infoDao.findById(clazz, id);
         infoDao.closeCurrentSession();
         return obj;
     }
 
-    public void delete(Integer id) {
+    public void delete(Class <T> clazz, Integer id) {
         infoDao.openCurrentSessionwithTransaction();
-        T obj = (T) infoDao.findById(id);
+        T obj =  infoDao.findById(clazz, id);
         infoDao.delete(obj);
         infoDao.closeCurrentSessionwithTransaction();
     }
 
-    public List<T> findAll() {
-        infoDao.openCurrentSession();
-        List<T> obj = infoDao.findAll();
-        infoDao.closeCurrentSession();
-        return obj;
+    public void deleteAll(Class <T> clazz) {
+        infoDao.openCurrentSessionwithTransaction();
+        infoDao.deleteAll(clazz);
+        infoDao.closeCurrentSessionwithTransaction();
     }
 
-    public void deleteAll() {
-        infoDao.openCurrentSessionwithTransaction();
-        infoDao.deleteAll();
-        infoDao.closeCurrentSessionwithTransaction();
+    public  List <T> findAll (Class <T> clazz) {
+        infoDao.openCurrentSession();
+        List<T> obj = infoDao.findAll(clazz);
+        infoDao.closeCurrentSession();
+        return  obj;
     }
 
     public InfoDao infoDao() {

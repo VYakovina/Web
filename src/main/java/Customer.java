@@ -1,5 +1,7 @@
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,17 @@ public class Customer {
 
     @Column
     private Date deactivated;
+
+    @Column
+    private Integer phone;
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
 
     public Customer() {
     }
@@ -101,4 +114,11 @@ public class Customer {
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerPaymennt")
     private List<Payment> customerPayment = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerName='" + customerName + '\'' +
+                '}';
+    }
 }
+

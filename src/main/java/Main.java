@@ -2,6 +2,8 @@ import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.Date;
 import java.util.List;
 
@@ -9,41 +11,37 @@ public class Main {
     public static void main(String[] args) {
 
         SessionFactory sessionFactory =  (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-      EntityManager  entityManager = sessionFactory.createEntityManager();
-      entityManager.getTransaction().begin();
+        EntityManager  entityManager = sessionFactory.createEntityManager();
+        entityManager.getTransaction().begin();
 
-        Date date = new Date();
+                Date date = new Date();
 
-        /*Customer customer = new Customer();
-        customer.setCustomerName("Test");
-        customer.setActivated(date);
-        customer.setBalance((float) 45.6);
-        customer.setDeactivated(date);
+                DaoService daoService = new DaoService();
+                System.out.println(daoService.findAll(Customer.class));
 
-        entityManager.persist(customer);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        sessionFactory.close();*/
+               /* DaoService daoService = new DaoService();
+                System.out.println(daoService.findAll(Customer.class));*/
 
-       /* StandardServiceRegistry registry =
-                new StandardServiceRegistryBuilder().configure(new File("hibernate.cfg.xml")).build();
-
-        try (SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory()) {
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();*/
-
-            DaoService daoService = new DaoService();
-            Customer customer1 = new Customer();
-            customer1.setCustomerName("Test2344");
-            daoService.persist(customer1);
-
-        // System.out.println(daoService.findById(2));
-
-            List<Customer> customers1 = daoService.findAll();
+           /* List<Customer> customers1 = daoService.findAll();
             System.out.println("Customers Persisted are :");
             for (Customer c : customers1) {
                 System.out.println("-" + c.toString());
-            }
+            }*/
+
+
+/*
+        Phone ph = new Phone();
+        Customer cus = new Customer();
+        DaoService  daoService = new DaoService<>();
+        ph.setPhoneNumber(2589631);
+        cus.setCustomerName("Tolya");
+        cus.setActivated(date);
+        cus.setBalance(45);
+        cus.setPhone(2589631);
+        daoService.persist(cus);
+        daoService.persist(ph);
+*/
+
         entityManager.close();
         sessionFactory.close();
 

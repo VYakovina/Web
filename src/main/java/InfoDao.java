@@ -2,36 +2,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
-public class InfoDao<T, Integer extends Serializable>  implements GenericDAO <T, Integer> {
+public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK> {
 
     private Session currentSession;
     private Transaction currentTransaction;
-
-   /* private Class<T> entityType;
-
-   public InfoDao () {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        entityType = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
-    }*/
-
-
-    protected Class<T> daoType;
-
-    public InfoDao() {
-        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-        Type type = genericSuperclass.getActualTypeArguments()[0];
-        if (type instanceof Class) {
-            this.daoType = (Class<T>) type;
-        } else if (type instanceof ParameterizedType) {
-            this.daoType = (Class<T>) ((ParameterizedType)type).getRawType();
-        }
-    }
+    private static EntityManager entityManager;
 
 
     public Session openCurrentSession() {
@@ -56,7 +40,7 @@ public class InfoDao<T, Integer extends Serializable>  implements GenericDAO <T,
 
     private static SessionFactory getSessionFactory() {
         SessionFactory sessionFactory =  (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
-        EntityManager entityManager = sessionFactory.createEntityManager();
+        entityManager = sessionFactory.createEntityManager();
         entityManager.getTransaction().begin();
         return sessionFactory;
     }
@@ -87,10 +71,9 @@ public class InfoDao<T, Integer extends Serializable>  implements GenericDAO <T,
         getCurrentSession().update(entity);
     }
 
-    @Override
-    public T findById(Integer id) {
-        T obj = (T) getCurrentSession().get(daoType, id);
-        return obj;
+    public T findById(Class <T> clazz, PK id) {
+        T obj =  getCurrentSession().get(clazz, id);
+        return obj ;
     }
 
     @Override
@@ -99,21 +82,24 @@ public class InfoDao<T, Integer extends Serializable>  implements GenericDAO <T,
     }
 
 
-    public List<T> findAll() {
-        List<T> obj = (List<T>) getCurrentSession().createQuery("from Customer").list();
-        return obj;
-    }
-
-    public void deleteAll() {
-        List<T> entityList = findAll();
+    public void deleteAll(Class<T> type) {
+        List<T> entityList = findAll(type);
         for (T entity : entityList) {
             delete(entity);
-
         }
+    }
 
+    public  List <T> findAll (Class <T> clazz){
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
+        Root<T> root = criteriaQuery.from(clazz);
+        TypedQuery<T> typedQuery = entityManager.createQuery(criteriaQuery);
+        List<T> res  =  typedQuery.getResultList();
+        return res;
     }
 
 }
+
 
 
 
