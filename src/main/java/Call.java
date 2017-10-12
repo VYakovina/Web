@@ -1,3 +1,4 @@
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -5,6 +6,8 @@ import java.util.Date;
 
 @Entity
 @Table
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Call {
     @Id
     @GeneratedValue

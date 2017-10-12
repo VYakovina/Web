@@ -9,7 +9,7 @@ import java.util.List;
 @Table
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class User {
+public class Userss {
     @Id
     @GeneratedValue
 

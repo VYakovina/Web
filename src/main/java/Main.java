@@ -1,5 +1,4 @@
 import org.hibernate.SessionFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
@@ -17,7 +16,18 @@ public class Main {
                 Date date = new Date();
 
                 DaoService daoService = new DaoService();
-                System.out.println(daoService.findAll(Customer.class));
+                Customer cu = new Customer();
+                System.out.println(daoService.findById(Customer.class,4));
+
+                System.out.println(daoService.findById(Customer.class,4));
+               /* Phone phone = new Phone();
+                phone.setPhoneNumber((long)3456677);
+                cu.setRow_id(1);
+                phone.setCustomerPhone(cu);
+                daoService.persist(phone);*/
+        /*        Phone cus = new Phone();
+        cus.setPhoneNumber((long) 197542);
+        daoService.persist(cus);*/
 
                /* DaoService daoService = new DaoService();
                 System.out.println(daoService.findAll(Customer.class));*/
@@ -42,7 +52,7 @@ public class Main {
         daoService.persist(ph);
 */
 
-        entityManager.close();
+
         sessionFactory.close();
 
     }

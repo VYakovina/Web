@@ -1,14 +1,14 @@
 import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK> {
@@ -44,7 +44,6 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK
         entityManager.getTransaction().begin();
         return sessionFactory;
     }
-
     public Session getCurrentSession() {
         return currentSession;
     }
@@ -72,7 +71,7 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK
     }
 
     public T findById(Class <T> clazz, PK id) {
-        T obj =  getCurrentSession().get(clazz, id);
+        T obj = (T) getCurrentSession().get(clazz, id);
         return obj ;
     }
 
@@ -80,7 +79,6 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK
     public void delete(T entity) {
         getCurrentSession().delete(entity);
     }
-
 
     public void deleteAll(Class<T> type) {
         List<T> entityList = findAll(type);
@@ -97,6 +95,7 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO <T, PK
         List<T> res  =  typedQuery.getResultList();
         return res;
     }
+
 
 }
 

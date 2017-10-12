@@ -1,3 +1,4 @@
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -6,6 +7,8 @@ import java.util.List;
 
 @Entity
 @Table
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Phone {
     @Id
     @GeneratedValue
@@ -14,7 +17,7 @@ public class Phone {
     private Integer row_id;
 
     @Column
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public Integer getRow_id() {
         return row_id;
@@ -24,11 +27,11 @@ public class Phone {
         this.row_id = row_id;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

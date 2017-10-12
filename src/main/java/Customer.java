@@ -1,4 +1,6 @@
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Entity
 @Table
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Customer {
     @Id
     @GeneratedValue
@@ -26,17 +30,6 @@ public class Customer {
 
     @Column
     private Date deactivated;
-
-    @Column
-    private Integer phone;
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
 
     public Customer() {
     }
