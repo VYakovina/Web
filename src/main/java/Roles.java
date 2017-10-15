@@ -33,15 +33,15 @@ public class Roles {
         this.nameRole = nameRole;
     }
 
-    public User getUserRoles() {
+    public UserPass getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(User userRoles) {
+    public void setUserRoles(UserPass userRoles) {
         this.userRoles = userRoles;
     }
 
     @ManyToOne
     @JoinColumn(name = "userID", foreignKey = @ForeignKey(name = "fk_roles_id"))
-    private User userRoles;
+    private UserPass userRoles;
 }

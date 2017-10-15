@@ -8,7 +8,7 @@ import java.io.IOException;
 public class ServlLog extends HttpServlet {
 
     DaoService daoService = new DaoService();
-    User user = new User();
+    UserPass user = new UserPass();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
