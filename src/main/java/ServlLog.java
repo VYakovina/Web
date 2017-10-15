@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JspLog extends HttpServlet {
+public class ServlLog extends HttpServlet {
 
     DaoService daoService = new DaoService();
     User user = new User();

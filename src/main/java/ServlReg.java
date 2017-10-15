@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-public class JspReg extends HttpServlet {
+public class ServlReg extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
