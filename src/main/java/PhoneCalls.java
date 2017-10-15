@@ -9,7 +9,7 @@ import java.util.Date;
 @Table
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Call {
+public class PhoneCalls {
     @Id
     @GeneratedValue
 
@@ -46,15 +46,15 @@ public class Call {
         this.phoneNumber = phoneNumber;
     }
 
-    public Call getCallPhone() {
+    public PhoneCalls getCallPhone() {
         return callPhone;
     }
 
-    public void setCallPhone(Call callPhone) {
+    public void setCallPhone(PhoneCalls callPhone) {
         this.callPhone = callPhone;
     }
 
     @ManyToOne
     @JoinColumn(name = "phonID", foreignKey = @ForeignKey(name = "fk_call_id"))
-    private Call callPhone;
+    private PhoneCalls callPhone;
 }

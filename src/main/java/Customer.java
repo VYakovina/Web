@@ -82,11 +82,11 @@ public class Customer {
         this.customerPhone = customerPhone;
     }
 
-    public List<User> getCustomerUser() {
+    public List<UserPass> getCustomerUser() {
         return customerUser;
     }
 
-    public void setCustomerUser(List<User> customerUser) {
+    public void setCustomerUser(List<UserPass> customerUser) {
         this.customerUser = customerUser;
     }
 
@@ -102,7 +102,7 @@ public class Customer {
     private List<Phone> customerPhone = new ArrayList<>();
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerUser")
-    private List<User> customerUser = new ArrayList<>();
+    private List<UserPass> customerUser = new ArrayList<>();
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "customerPaymennt")
     private List<Payment> customerPayment = new ArrayList<>();

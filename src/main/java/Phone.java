@@ -44,11 +44,11 @@ public class Phone {
         this.customerPhone = customerPhone;
     }
 
-    public List<Call> getCallPhone() {
+    public List<PhoneCalls> getCallPhone() {
         return callPhone;
     }
 
-    public void setCallPhone(List<Call> callPhone) {
+    public void setCallPhone(List<PhoneCalls> callPhone) {
         this.callPhone = callPhone;
     }
 
@@ -65,7 +65,7 @@ public class Phone {
     private Customer customerPhone;
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "callPhone")
-    private List<Call> callPhone = new ArrayList<>();
+    private List<PhoneCalls> callPhone = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "packID", foreignKey = @ForeignKey(name = "fk_phone2_id"))
