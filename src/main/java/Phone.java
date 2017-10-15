@@ -18,7 +18,7 @@ public class Phone {
     private Integer id;
 
     @Column
-    private BigInteger phoneNumber;
+    private String phoneNumber;
 
     public Integer getId() {
         return id;
@@ -28,11 +28,11 @@ public class Phone {
         this.id = id;
     }
 
-    public BigInteger getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(BigInteger phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

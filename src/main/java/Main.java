@@ -17,14 +17,18 @@ public class Main {
 
                 DaoService daoService = new DaoService();
                 Customer cu = new Customer();
-                System.out.println(daoService.findById(Customer.class,4));
+               // cu.setCustomerName("Tom");
+               // daoService.persist(cu);
+               // System.out.println(daoService.findById(Customer.class,4));
 
-                System.out.println(daoService.findById(Customer.class,4));
-               /* Phone phone = new Phone();
-                phone.setPhoneNumber((long)3456677);
-                cu.setRow_id(1);
-                phone.setCustomerPhone(cu);
-                daoService.persist(phone);*/
+               // System.out.println(daoService.findById(Customer.class,4));
+                Phone phone = new Phone();
+                phone.setPhoneNumber("380981236547");
+
+        phone.getCustomerPhone();
+
+
+                daoService.persist(phone);
         /*        Phone cus = new Phone();
         cus.setPhoneNumber((long) 197542);
         daoService.persist(cus);*/
@@ -38,22 +42,7 @@ public class Main {
                 System.out.println("-" + c.toString());
             }*/
 
-
-/*
-        Phone ph = new Phone();
-        Customer cus = new Customer();
-        DaoService  daoService = new DaoService<>();
-        ph.setPhoneNumber(2589631);
-        cus.setCustomerName("Tolya");
-        cus.setActivated(date);
-        cus.setBalance(45);
-        cus.setPhone(2589631);
-        daoService.persist(cus);
-        daoService.persist(ph);
-*/
-
-
         sessionFactory.close();
-
+        entityManager.close();
     }
 }
