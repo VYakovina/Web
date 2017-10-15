@@ -2,6 +2,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
@@ -13,20 +14,20 @@ public class Call {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private Date callDate;
 
     @Column
-    private Integer phoneNumber;
+    private BigInteger phoneNumber;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = row_id;
     }
 
     public Date getCallDate() {
@@ -37,11 +38,11 @@ public class Call {
         this.callDate = callDate;
     }
 
-    public Integer getPhoneNumber() {
+    public BigInteger getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(BigInteger phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -54,6 +55,6 @@ public class Call {
     }
 
     @ManyToOne
-    @JoinColumn(name = "phone_id", foreignKey = @ForeignKey(name = "fk_call_id"))
+    @JoinColumn(name = "phonID", foreignKey = @ForeignKey(name = "fk_call_id"))
     private Call callPhone;
 }

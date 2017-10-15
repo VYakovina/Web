@@ -13,7 +13,7 @@ public class Payment {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private Date paymentDate;
@@ -22,11 +22,11 @@ public class Payment {
     private Integer paymentAmount;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = row_id;
     }
 
     public Date getPaymentDate() {
@@ -55,7 +55,7 @@ public class Payment {
     }
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_payment_id"))
+    @JoinColumn(name = "customID", foreignKey = @ForeignKey(name = "fk_payment_id"))
     private Customer customerPaymennt;
 
 }

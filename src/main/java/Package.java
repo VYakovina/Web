@@ -14,17 +14,17 @@ public class Package {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private String packageName;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = id;
     }
 
     public String getPackageName() {

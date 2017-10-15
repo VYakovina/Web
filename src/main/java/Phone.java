@@ -14,17 +14,17 @@ public class Phone {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private String phoneNumber;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = row_id;
     }
 
     public String getPhoneNumber() {
@@ -60,14 +60,14 @@ public class Phone {
     }
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_phone_id"))
+    @JoinColumn(name = "customID", foreignKey = @ForeignKey(name = "fk_phone_id"))
     private Customer customerPhone;
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "callPhone")
     private List<Call> callPhone = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "package_id", foreignKey = @ForeignKey(name = "fk_phone2_id"))
+    @JoinColumn(name = "packID", foreignKey = @ForeignKey(name = "fk_phone2_id"))
     private Package packagePhone;
 
 }

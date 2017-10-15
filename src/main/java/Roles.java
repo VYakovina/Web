@@ -12,17 +12,17 @@ public class Roles {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private String nameRole;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = row_id;
     }
 
     public String getNameRole() {
@@ -42,6 +42,6 @@ public class Roles {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_roles_id"))
+    @JoinColumn(name = "userID", foreignKey = @ForeignKey(name = "fk_roles_id"))
     private User userRoles;
 }

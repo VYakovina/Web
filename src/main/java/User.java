@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue
 
     @Column
-    private Integer row_id;
+    private Integer id;
 
     @Column
     private String userName;
@@ -23,11 +23,11 @@ public class User {
     private String userPass;
 
     public Integer getRow_id() {
-        return row_id;
+        return id;
     }
 
     public void setRow_id(Integer row_id) {
-        this.row_id = row_id;
+        this.id = row_id;
     }
 
     public String getUserName() {
@@ -63,7 +63,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_user_id"))
+    @JoinColumn(name = "customID", foreignKey = @ForeignKey(name = "fk_user_id"))
     private Customer customerUser;
 
     @OneToMany (cascade = CascadeType.ALL,orphanRemoval = true, mappedBy = "userRoles")
