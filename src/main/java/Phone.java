@@ -2,6 +2,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,21 +18,21 @@ public class Phone {
     private Integer id;
 
     @Column
-    private String phoneNumber;
+    private BigInteger phoneNumber;
 
-    public Integer getRow_id() {
+    public Integer getId() {
         return id;
     }
 
-    public void setRow_id(Integer row_id) {
-        this.id = row_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getPhoneNumber() {
+    public BigInteger getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(BigInteger phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

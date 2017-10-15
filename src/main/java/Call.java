@@ -22,12 +22,12 @@ public class Call {
     @Column
     private BigInteger phoneNumber;
 
-    public Integer getRow_id() {
+    public Integer getId() {
         return id;
     }
 
-    public void setRow_id(Integer row_id) {
-        this.id = row_id;
+    public void setId(Integer row_id) {
+        this.id = id;
     }
 
     public Date getCallDate() {

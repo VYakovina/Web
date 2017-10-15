@@ -22,12 +22,12 @@ public class User {
     @Column
     private String userPass;
 
-    public Integer getRow_id() {
+    public Integer getId() {
         return id;
     }
 
-    public void setRow_id(Integer row_id) {
-        this.id = row_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUserName() {
