@@ -50,6 +50,12 @@ public class DaoService<T>  {
         return  obj;
     }
 
+    public  UserPass exists (String uname, String upass) {
+        infoDao.openCurrentSession();
+        UserPass obj = infoDao.exists(uname,upass);
+        infoDao.closeCurrentSession();
+        return obj;
+    }
     public InfoDao infoDao() {
         return infoDao;
 

@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="pass" value="" /></td>
+                        <td><input type="password" name="upass" value="" /></td>
                     </tr>
                     <tr>
                         <td>E-Mail</td>

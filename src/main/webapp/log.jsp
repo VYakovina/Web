@@ -7,7 +7,7 @@
         <title>JSP</title>
     </head>
     <body>
-        <form method="get" action="/log">
+        <form method="post" action="/log">
             <center>
             <table border="1" width="30%" cellpadding="3">
                 <thead>

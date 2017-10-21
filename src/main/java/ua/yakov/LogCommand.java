@@ -11,18 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 public class LogCommand implements Command {
 
     UserPass user = new UserPass();
-    QueryManager session;
+    DaoService daoService = new DaoService();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
 
         String userName = request.getParameter("uname");
+        String userPass = request.getParameter("upass");
 
-
-        Query q = (Query) session.createQuery("select u from UserPass u where u.userName = :userName");
-        q.setParameter("userName",userName);
-
-        if (userName.equals("userName")) {
+        if (daoService.exists(userName,userPass) == null )  {
             return "reg.jsp";
         } else {
             return "index.jsp";

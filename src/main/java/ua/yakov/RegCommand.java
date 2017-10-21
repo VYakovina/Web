@@ -19,7 +19,7 @@ public class RegCommand implements Command {
     public  String execute(HttpServletRequest request, HttpServletResponse response) {
         String uname = request.getParameter("fname");
         String userName = request.getParameter("uname");
-        String userPass = request.getParameter("pass");
+        String userPass = request.getParameter("upass");
         String userMail = request.getParameter("email");
             cus.getId();
             user.setCustomerUser(cus);

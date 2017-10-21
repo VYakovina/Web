@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "log", urlPatterns = "/log")
 public class ServlLog extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CommandFactory factory = CommandFactory.getInstance();
         Command com = factory.getCommand("login");

@@ -15,6 +15,7 @@ public class Main {
         entityManager.getTransaction().begin();
 
                 Date date = new Date();
+DaoService  daoService = new DaoService();
 
 
                /* DaoService daoService = new DaoService();

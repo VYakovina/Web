@@ -15,13 +15,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import static ua.yakov.UserPass_.userName;
 
-public   class InfoDao<T, PK extends Serializable>  implements GenericDAO<T, PK> {
+public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
 
     private Session currentSession;
     private Transaction currentTransaction;
@@ -49,11 +51,12 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO<T, PK>
     }
 
     private static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory =  (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+        SessionFactory sessionFactory = (SessionFactory) Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         entityManager = sessionFactory.createEntityManager();
         entityManager.getTransaction().begin();
         return sessionFactory;
     }
+
     public Session getCurrentSession() {
         return currentSession;
     }
@@ -80,9 +83,9 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO<T, PK>
         getCurrentSession().update(entity);
     }
 
-    public T findById(Class <T> clazz, PK id) {
+    public T findById(Class<T> clazz, PK id) {
         T obj = (T) getCurrentSession().get(clazz, id);
-        return obj ;
+        return obj;
     }
 
     @Override
@@ -97,31 +100,32 @@ public   class InfoDao<T, PK extends Serializable>  implements GenericDAO<T, PK>
         }
     }
 
-    public  List <T> findAll (Class <T> clazz){
+    public List<T> findAll(Class<T> clazz) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(clazz);
         Root<T> root = criteriaQuery.from(clazz);
         TypedQuery<T> typedQuery = entityManager.createQuery(criteriaQuery);
-        List<T> res  =  typedQuery.getResultList();
+        List<T> res = typedQuery.getResultList();
         return res;
     }
 
+    public UserPass exists(String uname, String upass) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<UserPass> criteriaQuery = cb.createQuery(UserPass.class);
+        Root<UserPass> from = criteriaQuery.from(UserPass.class);
+        // EntityType<UserPass> userModel = from.getModel();
+        Predicate predicate1 = cb.equal(from.get(UserPass_.userPass), upass);
+        Predicate predicate2 = cb.equal(from.get(UserPass_.userName), uname);
+        Predicate predicate = cb.and(predicate1, predicate2);
 
-
-
-   /* public  UserPass exists ( String uname, String upass ){
-
-         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-         CriteriaQuery<UserPass> criteriaQuery = cb.createQuery(UserPass.class);
-         Root<UserPass> from = criteriaQuery.from(UserPass.class);
-         criteriaQuery.select(from);
-         criteriaQuery.where(cb.equal(from.get(UserPass_.userName), uname));
-         criteriaQuery.where(cb.equal(from.get(UserPass_.userPass), upass));
-
-         TypedQuery<Long> tq = entityManager.createQuery(criteriaQuery);
-        return tq.getSingleResult() > 0;
-
-     }*/
+        criteriaQuery.where(predicate);
+        TypedQuery<UserPass> tq = entityManager.createQuery(criteriaQuery);
+        List<UserPass> res = tq.getResultList();
+        if (res.isEmpty()) {
+            return null;
+        } else
+            return res.get(0);
+    }
 
 }
 
