@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LogCommand implements Command {
 
-    UserPass user = new UserPass();
     DaoService daoService = new DaoService();
 
     @Override

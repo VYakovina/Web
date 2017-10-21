@@ -113,11 +113,9 @@ public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<UserPass> criteriaQuery = cb.createQuery(UserPass.class);
         Root<UserPass> from = criteriaQuery.from(UserPass.class);
-        // EntityType<UserPass> userModel = from.getModel();
         Predicate predicate1 = cb.equal(from.get(UserPass_.userPass), upass);
         Predicate predicate2 = cb.equal(from.get(UserPass_.userName), uname);
         Predicate predicate = cb.and(predicate1, predicate2);
-
         criteriaQuery.where(predicate);
         TypedQuery<UserPass> tq = entityManager.createQuery(criteriaQuery);
         List<UserPass> res = tq.getResultList();
