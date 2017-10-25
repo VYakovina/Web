@@ -1,5 +1,6 @@
 package ua.yakov;
 
+import org.springframework.stereotype.Controller;
 import ua.yakov.DaoService;
 import ua.yakov.UserPass;
 
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet(name = "log", urlPatterns = "/log")
+
+//@WebServlet(name = "log", urlPatterns = "/log")
 public class ServlLog extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

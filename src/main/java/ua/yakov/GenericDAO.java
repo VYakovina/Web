@@ -1,5 +1,7 @@
 package ua.yakov;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.List;
 

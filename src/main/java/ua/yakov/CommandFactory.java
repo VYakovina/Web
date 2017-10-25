@@ -1,10 +1,11 @@
 package ua.yakov;
 
+import org.springframework.stereotype.Component;
 import ua.yakov.Command;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class CommandFactory {
 
 private  static  CommandFactory instance;
@@ -12,7 +13,7 @@ private  static  CommandFactory instance;
     private Map<String, Command> comMap = new HashMap<>();
 
     private CommandFactory(){
-        comMap.put("registration", new RegCommand());
+      //  comMap.put("registration", new RegCommand());
         comMap.put("login", new LogCommand());
         }
 

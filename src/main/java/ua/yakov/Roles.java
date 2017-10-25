@@ -2,10 +2,11 @@ package ua.yakov;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 import ua.yakov.UserPass;
 
 import javax.persistence.*;
-
+@Component
 @Entity
 @Table
 @Cacheable

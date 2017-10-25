@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 import ua.yakov.GenericDAO;
 
 import javax.persistence.EntityManager;
@@ -22,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 import static ua.yakov.UserPass_.userName;
-
+@Component
 public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
 
     private Session currentSession;

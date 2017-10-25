@@ -1,8 +1,11 @@
 package ua.yakov;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.io.Serializable;
 import java.util.List;
-
+@Component
 public class DaoService<T>  {
 
     private InfoDao <T,Integer> infoDao;

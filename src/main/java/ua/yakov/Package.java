@@ -2,12 +2,13 @@ package ua.yakov;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 import ua.yakov.Status;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 @Entity
 @Table
 @Cacheable
