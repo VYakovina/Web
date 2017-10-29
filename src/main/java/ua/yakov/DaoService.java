@@ -59,6 +59,14 @@ public class DaoService<T>  {
         infoDao.closeCurrentSession();
         return obj;
     }
+
+    public  UserPass userExists (String uname) {
+        infoDao.openCurrentSession();
+        UserPass obj = infoDao.userExists(uname);
+        infoDao.closeCurrentSession();
+        return obj;
+    }
+
     public InfoDao infoDao() {
         return infoDao;
 

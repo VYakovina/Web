@@ -17,7 +17,7 @@ import java.util.List;
 //@WebServlet(name = "reg", urlPatterns = "/reg")
 public class ServlReg extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CommandFactory factory = CommandFactory.getInstance();
         Command com = factory.getCommand("registration");
@@ -25,7 +25,7 @@ public class ServlReg extends HttpServlet {
 
             RequestDispatcher rd = request.getRequestDispatcher(page);
             rd.forward(request, response);
-        }
+        }*/
     }
 
 

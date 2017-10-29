@@ -14,7 +14,7 @@ private  static  CommandFactory instance;
 
     private CommandFactory(){
       //  comMap.put("registration", new RegCommand());
-        comMap.put("login", new LogCommand());
+       // comMap.put("login", new LogCommand());
         }
 
     public static CommandFactory getInstance() {

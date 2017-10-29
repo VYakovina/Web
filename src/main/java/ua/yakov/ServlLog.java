@@ -15,7 +15,7 @@ import java.io.IOException;
 //@WebServlet(name = "log", urlPatterns = "/log")
 public class ServlLog extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         CommandFactory factory = CommandFactory.getInstance();
         Command com = factory.getCommand("login");
@@ -23,5 +23,5 @@ public class ServlLog extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher(page);
         rd.forward(request, response);
-    }
+    }*/
 }

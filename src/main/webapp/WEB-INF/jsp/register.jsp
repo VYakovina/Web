@@ -15,9 +15,7 @@
 <body>
 
     <c:set var="urladdr" value="/reg"/>
-
-    <%--@elvariable id="registrationUser" type="ua.yakov"--%>
-    <sf:form modelAttribute="registrationUser" action="${urladdr}">
+    <sf:form modelAttribute="registrationUser"  action="${urladdr}">
 
             <center>
             <table border="1" width="30%" cellpadding="5">
@@ -38,6 +36,10 @@
                     <tr>
                         <td>Password</td>
                         <td><sf:password path="upass" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><sf:input  path="email" /></td>
                     </tr>
                     <tr>
                         <td><input type="submit"  value="Submit" /></td>

@@ -21,7 +21,22 @@ public class LogicDao {
         daoService.persist(cus);
         daoService.persist(user);
 
+    }
 
+    public boolean Log(CusUser cusUser){
+        DaoService daoService = new DaoService();
+        if(daoService.exists(cusUser.getUname(),cusUser.getUpass()) == null){
+           return true;
+        }
+        return false;
+    }
+
+    public boolean RegLog(CusUser cusUser){
+        DaoService daoService = new DaoService();
+        if(daoService.userExists(cusUser.getUname()) == null){
+            return true;
+        }
+        return false;
     }
 
 }
