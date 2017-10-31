@@ -1,7 +1,6 @@
 package ua.yakov;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,14 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ua.yakov.Command;
-import ua.yakov.Customer;
-import ua.yakov.DaoService;
-import ua.yakov.UserPass;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes(types = {CusUser.class})
@@ -24,6 +15,10 @@ public class RegCommand  {
 
     @Autowired
     LogicDao logicDao;
+    @Autowired
+    LogValidator logValidator;
+    @Autowired
+    RegValidator regValidator;
 
     @RequestMapping(value = "/log", method = RequestMethod.GET)
     public String getLog (Model model) {
@@ -43,27 +38,32 @@ public class RegCommand  {
     public ModelAndView doReg(@ModelAttribute("registrationUser") @Validated CusUser cusUser, BindingResult result){
         ModelAndView mod = new ModelAndView();
 
-
-        if(logicDao.RegLog(cusUser) == true){
+        if (result.hasErrors()) {
+            mod.setViewName("register");
+        } else {
             logicDao.Regist(cusUser);
             mod.setViewName("log");
-        } else{
-            mod.setViewName("index");
         }
             return mod;
     }
 
-    @RequestMapping(value = "/log", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView doLog(@ModelAttribute("loginUser") @Validated CusUser cusUser, BindingResult result){
         ModelAndView mod = new ModelAndView();
 
-        if(logicDao.Log(cusUser) == true){
-            mod.setViewName("index");
-        } else{
+        if (result.hasErrors()) {
+            mod.setViewName("log");
+        } else {
             mod.setViewName("welcome");
         }
         return mod;
     }
+    @InitBinder
+    protected void logValidator(WebDataBinder binder) {
+          binder.setValidator(this.logValidator); }
 
+    @InitBinder
+    protected void regValidator(WebDataBinder binder) {
+        binder.setValidator(this.regValidator); }
 
 }
