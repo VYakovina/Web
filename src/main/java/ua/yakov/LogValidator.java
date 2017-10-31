@@ -17,9 +17,9 @@ public class LogValidator implements Validator {
     }
 
     @Override
-    public void validate(Object o, Errors errors) {
+    public void validate(Object obj, Errors errors) {
        LogicDao logicDao = new LogicDao();
-       CusUser  cusUser = (CusUser) o;
+       CusUser  cusUser = (CusUser) obj;
        if (logicDao.Log(cusUser) == true){
            errors.rejectValue("uname","error.LogExists");
        }
