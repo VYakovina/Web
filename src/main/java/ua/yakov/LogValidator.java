@@ -20,9 +20,11 @@ public class LogValidator implements Validator {
     public void validate(Object obj, Errors errors) {
        LogicDao logicDao = new LogicDao();
        CusUser  cusUser = (CusUser) obj;
-       if (logicDao.Log(cusUser) == true){
-           errors.rejectValue("uname","error.LogExists");
+       if (logicDao.LogIncor(cusUser) == true){
+           errors.rejectValue("uname","error.LogIncor");
        }
+
+
 
     }
 }

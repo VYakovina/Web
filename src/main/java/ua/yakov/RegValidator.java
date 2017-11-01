@@ -16,8 +16,8 @@ public class RegValidator implements Validator {
     public void validate(Object obj, Errors errors) {
         LogicDao logicDao = new LogicDao();
         CusUser  cusUser = (CusUser) obj;
-        if ( logicDao.RegLog(cusUser) == false) {
-            errors.rejectValue("uname","error.RegLogExists");
+        if (logicDao.RegLog(cusUser) == false) {
+            errors.rejectValue("rname","error.RegLogExists");
         }
 
     }

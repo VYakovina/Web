@@ -23,7 +23,7 @@ public class LogicDao {
 
     }
 
-    public boolean Log(CusUser cusUser){
+    public boolean LogIncor(CusUser cusUser){
         DaoService daoService = new DaoService();
         if(daoService.exists(cusUser.getUname(),cusUser.getUpass()) == null){
            return true;
@@ -33,10 +33,12 @@ public class LogicDao {
 
     public boolean RegLog(CusUser cusUser){
         DaoService daoService = new DaoService();
-        if(daoService.userExists(cusUser.getUname()) == null){
+        if(daoService.userExists(cusUser.getRname()) == null){
             return true;
         }
         return false;
     }
+
+
 
 }

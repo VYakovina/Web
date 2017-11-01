@@ -114,8 +114,8 @@ public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<UserPass> criteriaQuery = cb.createQuery(UserPass.class);
         Root<UserPass> from = criteriaQuery.from(UserPass.class);
-        Predicate predicate1 = cb.equal(from.get(UserPass_.userPass), upass);
-        Predicate predicate2 = cb.equal(from.get(UserPass_.userName), uname);
+        Predicate predicate1 = cb.equal(from.get(UserPass_.userName), uname);
+        Predicate predicate2 = cb.equal(from.get(UserPass_.userPass), upass);
         Predicate predicate = cb.and(predicate1, predicate2);
         criteriaQuery.where(predicate);
         TypedQuery<UserPass> tq = entityManager.createQuery(criteriaQuery);
@@ -126,11 +126,11 @@ public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
             return res.get(0);
     }
 
-    public UserPass userExists(String uname) {
+    public UserPass userExists(String rname) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<UserPass> criteriaQuery = cb.createQuery(UserPass.class);
         Root<UserPass> from = criteriaQuery.from(UserPass.class);
-        Predicate predicate = cb.equal(from.get(UserPass_.userName), uname);
+        Predicate predicate = cb.equal(from.get(UserPass_.userName), rname);
         criteriaQuery.where(predicate);
         TypedQuery<UserPass> tq = entityManager.createQuery(criteriaQuery);
         List<UserPass> res = tq.getResultList();
@@ -139,6 +139,7 @@ public class InfoDao<T, PK extends Serializable> implements GenericDAO<T, PK> {
         } else
             return res.get(0);
     }
+
 
 }
 

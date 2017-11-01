@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
     </style>
 </head>
 <body>
-<form method="POST" action="/reg" >
+<sf:form action="/reg" method="post" modelAttribute="registrationUser">
     <center>
         <table border="1" width="30%" cellpadding="5">
             <thead>
@@ -24,7 +28,8 @@
                 <td><input type="text" name ="fname" placeholder="Имя пользователя" required autocomplete="off"/></td>
             </tr>
             <td>User Name</td>
-            <td><input type="text" name ="uname" placeholder="Логин" required autocomplete="off"/></td>
+            <td><sf:input path="rname" placeholder="Логин"/>
+                <sf:errors path="rname" cssClass="error" /></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -44,6 +49,6 @@
             </tbody>
         </table>
     </center>
-</form>
+</sf:form>
 </body>
 </html>

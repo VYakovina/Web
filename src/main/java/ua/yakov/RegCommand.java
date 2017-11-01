@@ -43,6 +43,7 @@ public class RegCommand  {
         } else {
             logicDao.Regist(cusUser);
             mod.setViewName("log");
+
         }
             return mod;
     }
