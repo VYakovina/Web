@@ -4,7 +4,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
-  <display-name>Spring3 MVC Application</display-name>
+ <!-- <display-name>Spring3 MVC Application</display-name>
 
   <servlet>
     <servlet-name>RegCommand</servlet-name>
@@ -17,6 +17,6 @@
   <servlet-mapping>
     <servlet-name>RegCommand</servlet-name>
     <url-pattern>/</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 
 </web-app>

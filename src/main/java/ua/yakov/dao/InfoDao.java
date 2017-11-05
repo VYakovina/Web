@@ -3,6 +3,7 @@ package ua.yakov.dao;
 import org.springframework.stereotype.Component;
 import ua.yakov.entity.UserPass;
 import ua.yakov.UserPass_;
+import ua.yakov.entity.UserPass_;
 
 import javax.persistence.*;
 import javax.persistence.criteria.*;
