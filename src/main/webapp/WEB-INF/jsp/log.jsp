@@ -35,7 +35,7 @@
             <tr>
                 <td><input type="submit"  value="Login" /></td>
                 <td><input type="reset" value="Reset" />
-                    </td>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">Yet Not Registered!! <a href="register">Register Here</a></td>
