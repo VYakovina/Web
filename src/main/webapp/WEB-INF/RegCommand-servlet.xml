@@ -9,19 +9,21 @@
        http://www.springframework.org/schema/context/spring-context.xsd
  ">
 
-    <context:component-scan base-package="ua.yakov"/>
+
 
     <!--where to find jsp pages -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <property name="prefix" value="/WEB-INF/jsp/"/>
+         <property name="suffix" value=".jsp"/>
+     </bean>
 
-    <bean id="messageSource"
-          class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="propertyFile" />
+<context:component-scan base-package="ua.yakov"/>
 
-    </bean>
+     <bean id="messageSource"
+           class="org.springframework.context.support.ResourceBundleMessageSource">
+         <property name="basename" value="propertyFile" />
+
+     </bean>-->
 
 
 </beans>

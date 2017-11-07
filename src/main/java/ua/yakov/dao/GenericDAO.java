@@ -1,8 +1,9 @@
 package ua.yakov.dao;
-
+import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
-public interface GenericDAO <T, PK extends Serializable> {
+@Component
+public interface GenericDao<T, PK extends Serializable> {
 
     public void persist(T entity);
     public void update(T entity);

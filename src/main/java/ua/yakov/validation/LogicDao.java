@@ -1,6 +1,7 @@
 package ua.yakov.validation;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.yakov.entity.Customer;
 import ua.yakov.dao.DaoService;
@@ -9,13 +10,14 @@ import ua.yakov.entity.UserPass;
 @Component
 public class LogicDao {
 
+    @Autowired
+    Customer cus;
+    @Autowired
+    UserPass user;
+    @Autowired
+    DaoService daoService;
 
     public void  Regist (CusUser cusUser){
-
-        Customer cus = new Customer();
-        UserPass user = new UserPass();
-        DaoService daoService = new DaoService();
-
         cus.getId();
         user.setCustomerUser(cus);
         cus.setEmail(cusUser.getEmail());
@@ -28,7 +30,7 @@ public class LogicDao {
     }
 
     public boolean LogIncor(CusUser cusUser){
-        DaoService daoService = new DaoService();
+
         if(daoService.exists(cusUser.getUname(),cusUser.getUpass()) == null){
            return true;
         }
@@ -36,8 +38,8 @@ public class LogicDao {
     }
 
     public boolean RegLog(CusUser cusUser){
-        DaoService daoService = new DaoService();
-        if(daoService.userExists(cusUser.getRname()) == null){
+
+        if(daoService.userExists(cusUser.getUname()) == null){
             return true;
         }
         return false;

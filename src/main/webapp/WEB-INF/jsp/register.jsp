@@ -28,8 +28,8 @@
                 <td><input type="text" name ="fname" placeholder="Имя пользователя" required autocomplete="off"/></td>
             </tr>
             <td>User Name</td>
-            <td><sf:input path="rname" placeholder="Логин"/>
-                <sf:errors path="rname" cssClass="error" /></td>
+            <td><sf:input path="uname" placeholder="Логин"/>
+                <sf:errors path="uname" cssClass="error" /></td>
             </tr>
             <tr>
                 <td>Password</td>

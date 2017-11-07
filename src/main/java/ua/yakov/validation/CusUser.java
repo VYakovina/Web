@@ -7,7 +7,6 @@ public class CusUser {
 
     private String fname;
     private String uname;
-    private String rname;
     private String upass;
     private String email;
     private Integer id;
@@ -50,13 +49,6 @@ public class CusUser {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    public String getRname() {
-        return rname;
-    }
-
-    public void setRname(String rname) {
-        this.rname = rname;
     }
 
 }

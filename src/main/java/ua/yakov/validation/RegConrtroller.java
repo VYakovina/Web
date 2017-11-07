@@ -59,11 +59,12 @@ public class RegConrtroller {
         }
         return mod;
     }
-    @InitBinder
+
+    @InitBinder("loginUser")
     protected void logValidator(WebDataBinder binder) {
           binder.setValidator(this.logValidator); }
 
-    @InitBinder
+    @InitBinder("registrationUser")
     protected void regValidator(WebDataBinder binder) {
         binder.setValidator(this.regValidator); }
 
