@@ -1,5 +1,8 @@
 package ua.yakov.configur;
 
+
+/*import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;*/
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +13,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ua.yakov.dao.Dao;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -67,11 +69,10 @@ return dataSource;
         return new JpaTransactionManager(emf);
     }
 
-    @Bean
-    public Dao getDao() {
-        return new Dao();
-    }
-
+    /*@Bean
+    public Logger getGetLogger() {
+         return LogManager.getLogger("ua.yakov.repositpry");
+    }*/
 
 
 }

@@ -4,8 +4,9 @@ package ua.yakov.validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ua.yakov.entity.Customer;
-import ua.yakov.dao.DaoService;
 import ua.yakov.entity.UserPass;
+import ua.yakov.service.impl.CustorerServiceImpl;
+import ua.yakov.service.impl.UserPassServiceImpl;
 
 @Component
 public class LogicDao {
@@ -15,7 +16,10 @@ public class LogicDao {
     @Autowired
     UserPass user;
     @Autowired
-    DaoService daoService;
+    CustorerServiceImpl custorerService;
+    @Autowired
+    UserPassServiceImpl userPassService;
+
 
     public void  Regist (CusUser cusUser){
         cus.getId();
@@ -24,14 +28,14 @@ public class LogicDao {
         cus.setCustomerName(cusUser.getFname());
         user.setUserName(cusUser.getUname());
         user.setUserPass(cusUser.getUpass());
-        daoService.persist(cus);
-        daoService.persist(user);
+        custorerService.addCustomer(cus);
+        userPassService.addUserPass(user);
 
     }
 
     public boolean LogIncor(CusUser cusUser){
 
-        if(daoService.exists(cusUser.getUname(),cusUser.getUpass()) == null){
+        if(userPassService.getByUserName(cusUser.getUname(),cusUser.getUpass()) == null){
            return true;
         }
         return false;
@@ -39,12 +43,10 @@ public class LogicDao {
 
     public boolean RegLog(CusUser cusUser){
 
-        if(daoService.userExists(cusUser.getUname()) == null){
+        if(custorerService.getByName(cusUser.getUname()) == null){
             return true;
         }
         return false;
     }
-
-
 
 }
