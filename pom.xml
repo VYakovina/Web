@@ -73,6 +73,12 @@
       <artifactId>ojdbc7</artifactId>
       <version>12.1.0.2</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
+
     <!--<dependency>-->
       <!--<groupId>org.apache.logging.log4j</groupId>-->
       <!--<artifactId>log4j-core</artifactId>-->

@@ -55,7 +55,7 @@ public class RegConrtroller {
         if (result.hasErrors()) {
             mod.setViewName("log");
         } else {
-            mod.setViewName("chat");
+            mod.setViewName("welcome");
         }
         return mod;
     }

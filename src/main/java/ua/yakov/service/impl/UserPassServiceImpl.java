@@ -1,24 +1,37 @@
 package ua.yakov.service.impl;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.yakov.entity.UserPass;
 import ua.yakov.repository.UserPassRepository;
 import ua.yakov.service.UserPassService;
+
+import java.util.List;
+
+
 @Service
 public class UserPassServiceImpl implements UserPassService {
 
     @Autowired
     UserPassRepository userPassRepository;
-
+   /* @Autowired
+    Logger logger;
+*/
     @Override
     public UserPass addUserPass(UserPass userpass) {
         UserPass savedUserPass = userPassRepository.saveAndFlush(userpass);
+       // logger.info("exist");
         return savedUserPass;
     }
 
     @Override
-    public UserPass getByUserName(String uname, String upass) {
+    public UserPass getByUserNameAndUserPass(String uname, String upass) {
       return  userPassRepository.findByName(uname,upass);
+    }
+
+    @Override
+    public UserPass getByUserName(String uname) {
+         return  userPassRepository.findByUserName(uname);
     }
 }

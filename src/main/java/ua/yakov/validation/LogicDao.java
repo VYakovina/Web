@@ -35,7 +35,7 @@ public class LogicDao {
 
     public boolean LogIncor(CusUser cusUser){
 
-        if(userPassService.getByUserName(cusUser.getUname(),cusUser.getUpass()) == null){
+        if(userPassService.getByUserNameAndUserPass(cusUser.getUname(),cusUser.getUpass()) == null){
            return true;
         }
         return false;
@@ -43,7 +43,7 @@ public class LogicDao {
 
     public boolean RegLog(CusUser cusUser){
 
-        if(custorerService.getByName(cusUser.getUname()) == null){
+        if(userPassService.getByUserName(cusUser.getUname()) == null){
             return true;
         }
         return false;
