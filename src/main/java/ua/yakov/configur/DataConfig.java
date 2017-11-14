@@ -4,17 +4,16 @@ package ua.yakov.configur;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -64,15 +63,17 @@ return dataSource;
 }
 
     @Bean
-    @Qualifier(value = "jpaTransactionManager")
-    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-        return new JpaTransactionManager(emf);
-    }
-
-    /*@Bean
     public Logger getGetLogger() {
          return LogManager.getLogger("ua.yakov.repositpry");
-    }*/
+    }
 
-
+    @Bean(name = "userDetailsService")
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
+        jdbcDao.setDataSource(dataSource());
+        jdbcDao.setUsersByUsernameQuery("select userName, userPass from UserPass where userName =?");
+        jdbcDao.setAuthoritiesByUsernameQuery("select u.userName,r.nameRole from UserPass u, Roles r where u.id = r.userId" +
+                " and u.userName = ?");
+        return jdbcDao;
+    }
 }

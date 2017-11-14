@@ -60,6 +60,21 @@ public class RegConrtroller {
         return mod;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView getIndex() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("start");
+        return model;
+    }
+
+    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
+    public ModelAndView protectedPage() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("protect");
+        return model;
+      }
+
+
     @InitBinder("loginUser")
     protected void logValidator(WebDataBinder binder) {
           binder.setValidator(this.logValidator); }

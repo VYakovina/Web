@@ -15,13 +15,13 @@ public class UserPassServiceImpl implements UserPassService {
 
     @Autowired
     UserPassRepository userPassRepository;
-   /* @Autowired
+   @Autowired
     Logger logger;
-*/
+
     @Override
     public UserPass addUserPass(UserPass userpass) {
         UserPass savedUserPass = userPassRepository.saveAndFlush(userpass);
-       // logger.info("exist");
+       logger.info("exist");
         return savedUserPass;
     }
 
