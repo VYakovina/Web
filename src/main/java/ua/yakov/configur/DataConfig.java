@@ -71,7 +71,7 @@ return dataSource;
     public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
         jdbcDao.setDataSource(dataSource());
-        jdbcDao.setUsersByUsernameQuery("select userName, userPass from UserPass where userName =?");
+        jdbcDao.setUsersByUsernameQuery("select userName, userPass, enabled from UserPass where userName =?");
         jdbcDao.setAuthoritiesByUsernameQuery("select u.userName,r.nameRole from UserPass u, Roles r where u.id = r.userId" +
                 " and u.userName = ?");
         return jdbcDao;

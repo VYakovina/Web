@@ -2,6 +2,9 @@ package ua.yakov.validation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ua.yakov.entity.Customer;
 import ua.yakov.entity.UserPass;
@@ -19,7 +22,8 @@ public class LogicDao {
     CustorerServiceImpl custorerService;
     @Autowired
     UserPassServiceImpl userPassService;
-
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public void  Regist (CusUser cusUser){
         cus.getId();
@@ -27,7 +31,7 @@ public class LogicDao {
         cus.setEmail(cusUser.getEmail());
         cus.setCustomerName(cusUser.getFname());
         user.setUserName(cusUser.getUname());
-        user.setUserPass(cusUser.getUpass());
+        user.setUserPass(passwordEncoder.encode(cusUser.getUpass()));
         custorerService.addCustomer(cus);
         userPassService.addUserPass(user);
 
