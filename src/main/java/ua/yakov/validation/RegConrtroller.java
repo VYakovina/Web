@@ -9,22 +9,26 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @SessionAttributes(types = {CusUser.class})
 public class RegConrtroller {
 
     @Autowired
     LogicDao logicDao;
-    @Autowired
-    LogValidator logValidator;
+/*    @Autowired
+    LogValidator logValidator;*/
     @Autowired
     RegValidator regValidator;
 
     @RequestMapping(value = "/log", method = RequestMethod.GET)
-    public String getLog (Model model) {
-        CusUser user = new CusUser();
-        model.addAttribute("loginUser", user);
-        return "log";
+    public ModelAndView getLog () {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("log");
+       /* CusUser user = new CusUser();
+        model.addAttribute("loginUser", user);*/
+        return modelAndView;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -47,17 +51,13 @@ public class RegConrtroller {
         }
             return mod;
     }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView doLog(@ModelAttribute("loginUser") @Validated CusUser cusUser, BindingResult result){
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView doLog( Principal principal){
         ModelAndView mod = new ModelAndView();
 
-        if (result.hasErrors()) {
-            mod.setViewName("log");
-        } else {
-            mod.setViewName("welcome");
-        }
-        return mod;
+            mod.setViewName("user/welcome");
+
+       return mod;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -67,17 +67,20 @@ public class RegConrtroller {
         return model;
     }
 
-    @RequestMapping(value = "/protected**", method = RequestMethod.GET)
+    @RequestMapping(value = "/protected/**", method = RequestMethod.GET)
     public ModelAndView protectedPage() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("protect");
+        model.setViewName("/protected/protect");
         return model;
       }
 
+    @RequestMapping(value = "/user/**", method = RequestMethod.GET)
+    public ModelAndView userPage() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("/user/welcome");
+        return model;
+    }
 
-    @InitBinder("loginUser")
-    protected void logValidator(WebDataBinder binder) {
-          binder.setValidator(this.logValidator); }
 
     @InitBinder("registrationUser")
     protected void regValidator(WebDataBinder binder) {

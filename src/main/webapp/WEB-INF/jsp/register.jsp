@@ -28,12 +28,12 @@
                 <td><input type="text" name ="fname" placeholder="Имя пользователя" required autocomplete="off"/></td>
             </tr>
             <td>User Name</td>
-            <td><sf:input path="uname" placeholder="Логин"/>
-                <sf:errors path="uname" cssClass="error" /></td>
+            <td><sf:input path="username" placeholder="Логин"/>
+                <sf:errors path="username" cssClass="error" /></td>
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" name ="upass" placeholder="Пароль"required autocomplete="off"/></td>
+                <td><input type="password" name ="password" placeholder="Пароль"required autocomplete="off"/></td>
             </tr>
             <tr>
                 <td>E-mail</td>

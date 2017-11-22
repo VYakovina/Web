@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 public class CusUser {
 
     private String fname;
-    private String uname;
-    private String upass;
+    private String username;
+    private String password;
     private String email;
     private Integer id;
 
@@ -27,21 +27,24 @@ public class CusUser {
         this.fname = fname;
     }
 
-    public String getUname() {
-        return uname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUpass() {
-        return upass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUpass(String upass) {
-        this.upass = upass;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+
+
 
     public String getEmail() {
         return email;

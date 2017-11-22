@@ -30,24 +30,16 @@ public class LogicDao {
         user.setCustomerUser(cus);
         cus.setEmail(cusUser.getEmail());
         cus.setCustomerName(cusUser.getFname());
-        user.setUserName(cusUser.getUname());
-        user.setUserPass(passwordEncoder.encode(cusUser.getUpass()));
+        user.setUsername(cusUser.getUsername());
+        user.setPassword(passwordEncoder.encode(cusUser.getPassword()));
         custorerService.addCustomer(cus);
         userPassService.addUserPass(user);
 
     }
 
-    public boolean LogIncor(CusUser cusUser){
-
-        if(userPassService.getByUserNameAndUserPass(cusUser.getUname(),cusUser.getUpass()) == null){
-           return true;
-        }
-        return false;
-    }
-
     public boolean RegLog(CusUser cusUser){
 
-        if(userPassService.getByUserName(cusUser.getUname()) == null){
+        if(userPassService.getByUserName(cusUser.getUsername()) == null){
             return true;
         }
         return false;

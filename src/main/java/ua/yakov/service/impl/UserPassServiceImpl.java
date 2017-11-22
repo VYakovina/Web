@@ -25,13 +25,13 @@ public class UserPassServiceImpl implements UserPassService {
         return savedUserPass;
     }
 
-    @Override
-    public UserPass getByUserNameAndUserPass(String uname, String upass) {
-      return  userPassRepository.findByName(uname,upass);
-    }
+   /* @Override
+    public UserPass getByUserNameAndUserPass(String uname, String password) {
+      return  userPassRepository.findByName(uname,password);
+    }*/
 
     @Override
-    public UserPass getByUserName(String uname) {
-         return  userPassRepository.findByUserName(uname);
+    public UserPass getByUserName(String username) {
+         return  userPassRepository.findByUserName(username);
     }
 }

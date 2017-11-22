@@ -17,12 +17,12 @@ public class UserPass {
 
     @Column
     private Integer id;
-
     @Column
-    private String userName;
-
+    private String username;
     @Column
-    private String userPass;
+    private String enabled;
+    @Column
+    private String password;
 
     public Integer getId() {
         return id;
@@ -32,20 +32,27 @@ public class UserPass {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getPassword() {
+        return password;
     }
 
-    public String getUserPass() {
-        return userPass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setUserPass(String userPass) {
-        this.userPass = userPass;
+    public String getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(String enabled) {
+        this.enabled = enabled;
     }
 
     public Customer getCustomerUser() {
