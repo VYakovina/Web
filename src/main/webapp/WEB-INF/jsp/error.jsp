@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Wrong!</h2>
+<h2>ERROR!</h2>
 </body>
 </html>

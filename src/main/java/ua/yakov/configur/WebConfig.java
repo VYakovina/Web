@@ -14,7 +14,7 @@ import java.util.Locale;
 @Configuration
 @EnableWebMvc
 @ComponentScan("ua.yakov")
-public class WebConfig /*extends WebMvcConfigurerAdapter*/ {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     /*@Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

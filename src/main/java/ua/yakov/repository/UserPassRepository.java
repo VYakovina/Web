@@ -12,4 +12,6 @@ public interface UserPassRepository extends JpaRepository<UserPass, Integer> {
 
     @Query("select c from UserPass c where c.username = :username")
     UserPass findByUserName(@Param("username") String username);
+
+
 }

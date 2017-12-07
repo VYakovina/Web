@@ -9,4 +9,5 @@ public interface CustomerService {
     Customer getByName(String name);
     Customer editCustomer(Customer customer);
     List<Customer> getAll();
+    Customer getCustomer(int id);
 }

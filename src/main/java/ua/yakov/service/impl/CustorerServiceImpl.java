@@ -38,4 +38,10 @@ public class CustorerServiceImpl implements CustomerService {
     public List<Customer> getAll() {
         return customerRepository.findAll();
     }
+
+    @Override
+    public Customer getCustomer(int id) {
+        return customerRepository.findOne(id);
+    }
+
 }

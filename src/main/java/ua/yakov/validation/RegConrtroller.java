@@ -9,7 +9,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @SessionAttributes(types = {CusUser.class})
@@ -47,7 +50,6 @@ public class RegConrtroller {
         } else {
             logicDao.Regist(cusUser);
             mod.setViewName("log");
-
         }
             return mod;
     }
@@ -60,12 +62,12 @@ public class RegConrtroller {
        return mod;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getIndex() {
         ModelAndView model = new ModelAndView();
         model.setViewName("start");
         return model;
-    }
+    }*/
 
     @RequestMapping(value = "/protected/**", method = RequestMethod.GET)
     public ModelAndView protectedPage() {

@@ -1,6 +1,9 @@
 package ua.yakov.validation;
 
 import org.springframework.stereotype.Component;
+import ua.yakov.entity.Payment;
+
+import java.util.Date;
 
 @Component
 public class CusUser {
@@ -10,6 +13,40 @@ public class CusUser {
     private String password;
     private String email;
     private Integer id;
+    private Integer customerId;
+    private Integer paymentAmount;
+    private Date paymentDate;
+
+    public CusUser() {
+
+    }
+
+    public CusUser(Payment payment) {
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Integer getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public void setPaymentAmount(Integer paymentAmount) {
+        this.paymentAmount = paymentAmount;
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
+    }
 
     public Integer getId() {
         return id;
@@ -42,9 +79,6 @@ public class CusUser {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
 
     public String getEmail() {
         return email;
