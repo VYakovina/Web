@@ -51,7 +51,7 @@ public class RegConrtroller {
             logicDao.Regist(cusUser);
             mod.setViewName("log");
         }
-            return mod;
+              return mod;
     }
   @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView doLog( Principal principal){
