@@ -7,8 +7,8 @@ import java.util.Date;
 
 @Component
 public class CusUser {
-
-    private String fname;
+// test
+   private String fname;
     private String username;
     private String password;
     private String email;
